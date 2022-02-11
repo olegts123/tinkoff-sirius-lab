@@ -16,7 +16,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
-    // MARK - private properties
+    // MARK - Private properties
     
     private let companies: [String: String] = ["Apple": "AAPL",
                                                "Microsoft": "MSFT",
@@ -24,15 +24,32 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                                                "Amazon": "AMZN",
                                                "Facebook": "FB"]
     
+    private let apiToken = "pk_30a2dc614a084561b6c3e6d053487def"
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.companyNameLabel.text = "Tinkoff"
         
         self.companyPickerView.dataSource = self
-        
         self.companyPickerView.delegate = self
+        
+        self.activityIndicator.startAnimating()
+        self.requestQuote(for: "AAPL")
     }
 
+    
+    // MARK - Private methods
+    
+    private func requestQuote(for symbol: String) {
+        let url = URL(string:"https://cloud.iexapis.com/stable/stock/\(symbol)/quote?token=\(self.apiToken)")!
+        let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
+            print(data!)
+        }
+        
+        dataTask.resume()
+    }
     
     
     // MARK - UIPickerViewDataSource
