@@ -35,7 +35,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         self.companyPickerView.dataSource = self
         self.companyPickerView.delegate = self
         
+        self.activityIndicator.hidesWhenStopped = true
         self.activityIndicator.startAnimating()
+        
         self.requestQuote(for: "AAPL")
     }
 
@@ -45,10 +47,36 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     private func requestQuote(for symbol: String) {
         let url = URL(string:"https://cloud.iexapis.com/stable/stock/\(symbol)/quote?token=\(self.apiToken)")!
         let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
-            print(data!)
+            guard
+                error == nil,
+                (response as? HTTPURLResponse)?.statusCode == 200,
+                let data = data
+            else {
+                print(" Network error")
+                return
+            }
+            self.parseQuote(data: data)
         }
-        
         dataTask.resume()
+    }
+    
+    private func parseQuote(data: Data) {
+        do {
+            let jsonObject = try JSONSerialization.jsonObject(with: data)
+            
+            guard
+                let json = jsonObject as? [String: Any],
+                let companyName = json["companyName"] as? String
+            else {
+                print("Invalid JSON format")
+                return
+            }
+            
+            print("Company name is: \(companyName)")
+        }
+        catch {
+            print("JSON parsing error: " + error.localizedDescription)
+        }
     }
     
     
@@ -66,6 +94,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return Array(self.companies.keys)[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.activityIndicator.startAnimating()
+        let selectedSymbol = Array(self.companies.values)[row]
+        self.requestQuote(for: selectedSymbol)
     }
 }
 

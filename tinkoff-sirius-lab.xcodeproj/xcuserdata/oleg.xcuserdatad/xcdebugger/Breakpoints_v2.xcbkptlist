@@ -14,8 +14,8 @@
             filePath = "tinkoff-sirius-lab/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "requestQuote(for:)"
             landmarkType = "7">
          </BreakpointContent>
