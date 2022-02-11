@@ -105,6 +105,14 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         self.companyNameLabel.text = companyName
         self.companySymbolLabel.text = companySymbol
         self.priceLabel.text = "\(price)"
+        var textColor = UIColor.black
+        if priceChange > 0 {
+            textColor = UIColor.systemGreen
+        }
+        else if priceChange < 0 {
+            textColor = UIColor.systemRed
+        }
+        self.priceChangeLabel.textColor = textColor
         self.priceChangeLabel.text = "\(priceChange)"
     }
     
