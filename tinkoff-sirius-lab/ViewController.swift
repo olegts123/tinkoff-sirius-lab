@@ -67,6 +67,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         self.companyNameLabel.text = "-"
         self.companySymbolLabel.text = "-"
         self.priceLabel.text = "-"
+        self.priceChangeLabel.textColor = UIColor.black
         self.priceChangeLabel.text = "-"
         
         let selecterRow = self.companyPickerView.selectedRow(inComponent: 0)
