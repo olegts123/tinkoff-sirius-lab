@@ -104,7 +104,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         self.activityIndicator.stopAnimating()
         self.companyNameLabel.text = companyName
         self.companySymbolLabel.text = companySymbol
-        self.priceLabel.text = "\(price)"
+        self.priceLabel.text = "\(price) $"
         var textColor = UIColor.black
         if priceChange > 0 {
             textColor = UIColor.systemGreen
@@ -113,7 +113,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             textColor = UIColor.systemRed
         }
         self.priceChangeLabel.textColor = textColor
-        self.priceChangeLabel.text = "\(priceChange)"
+        self.priceChangeLabel.text = "\(priceChange) $"
     }
     
     // MARK - UIPickerViewDataSource
