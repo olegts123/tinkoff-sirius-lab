@@ -65,6 +65,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     private func requestQuoteUpdate () {
         self.activityIndicator.startAnimating()
         self.companyNameLabel.text = "-"
+        self.companySymbolLabel.text = "-"
+        self.priceLabel.text = "-"
+        self.priceChangeLabel.text = "-"
         
         let selecterRow = self.companyPickerView.selectedRow(inComponent: 0)
         let selecterSymbol = Array(self.companies.values)[selecterRow]
@@ -77,19 +80,33 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             
             guard
                 let json = jsonObject as? [String: Any],
-                let companyName = json["companyName"] as? String
+                let companyName = json["companyName"] as? String,
+                let companySymbol = json["symbol"] as? String,
+                let price = json["latestPrice"] as? Double,
+                let priceChange = json["change"] as? Double
             else {
                 print("Invalid JSON format")
                 return
             }
-            
-            print("Company name is: \(companyName)")
+            DispatchQueue.main.async {
+                self.displayStockInfo(companyName: companyName,
+                                      companySymbol: companySymbol,
+                                      price: price,
+                                      priceChange: priceChange)
+            }
         }
         catch {
             print("JSON parsing error: " + error.localizedDescription)
         }
     }
     
+    private func displayStockInfo(companyName: String, companySymbol: String, price: Double, priceChange: Double){
+        self.activityIndicator.stopAnimating()
+        self.companyNameLabel.text = companyName
+        self.companySymbolLabel.text = companySymbol
+        self.priceLabel.text = "\(price)"
+        self.priceChangeLabel.text = "\(priceChange)"
+    }
     
     // MARK - UIPickerViewDataSource
     
