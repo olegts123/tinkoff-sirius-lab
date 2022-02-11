@@ -31,14 +31,19 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQP-Ik-AuY">
                                 <rect key="frame" x="0.0" y="593" width="414" height="269"/>
                             </pickerView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="cxf-0N-A7w">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ysi-Cn-VZk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="5WL-dX-73Q"/>
                             <constraint firstItem="EQP-Ik-AuY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FUC-TC-YGs"/>
+                            <constraint firstItem="cxf-0N-A7w" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HAa-bC-2G3"/>
                             <constraint firstItem="EQP-Ik-AuY" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="HYH-Hq-XUV"/>
                             <constraint firstItem="Ysi-Cn-VZk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="IyK-fi-dnF"/>
+                            <constraint firstItem="cxf-0N-A7w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UTD-ud-arn"/>
                             <constraint firstItem="EQP-Ik-AuY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cLG-bn-BCY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EQP-Ik-AuY" secondAttribute="bottom" id="hhZ-oY-3CE"/>
                             <constraint firstItem="5XY-nZ-MlV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="lcA-4U-m9l"/>
@@ -46,6 +51,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="cxf-0N-A7w" id="1AA-AN-zdN"/>
                         <outlet property="companyNameLabel" destination="5XY-nZ-MlV" id="ukv-z2-QLw"/>
                         <outlet property="companyPickerView" destination="EQP-Ik-AuY" id="Ec3-ec-vhB"/>
                     </connections>

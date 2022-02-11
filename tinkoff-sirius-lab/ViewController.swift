@@ -11,7 +11,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var companyNameLabel: UILabel!
     @IBOutlet weak var companyPickerView: UIPickerView!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     override func viewDidLoad() {
