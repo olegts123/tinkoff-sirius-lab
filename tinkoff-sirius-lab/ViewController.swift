@@ -36,9 +36,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         self.companyPickerView.delegate = self
         
         self.activityIndicator.hidesWhenStopped = true
-        self.activityIndicator.startAnimating()
-        
-        self.requestQuote(for: "AAPL")
+        self.requestQuoteUpdate()
     }
 
     
@@ -58,6 +56,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             self.parseQuote(data: data)
         }
         dataTask.resume()
+    }
+    
+    private func requestQuoteUpdate () {
+        self.activityIndicator.startAnimating()
+        self.companyNameLabel.text = "-"
+        
+        let selecterRow = self.companyPickerView.selectedRow(inComponent: 0)
+        let selecterSymbol = Array(self.companies.values)[selecterRow]
+        self.requestQuote(for: selecterSymbol)
     }
     
     private func parseQuote(data: Data) {
