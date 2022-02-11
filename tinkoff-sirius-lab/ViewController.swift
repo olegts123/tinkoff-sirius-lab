@@ -10,8 +10,12 @@ import UIKit
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     
-
+    // MARK - IBOutlets
+    
     @IBOutlet weak var companyNameLabel: UILabel!
+    @IBOutlet weak var companySymbolLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var priceChangeLabel: UILabel!
     @IBOutlet weak var companyPickerView: UIPickerView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
