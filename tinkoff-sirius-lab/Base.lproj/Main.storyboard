@@ -23,9 +23,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XY-nZ-MlV">
-                                <rect key="frame" x="194" y="84" width="180" height="20.5"/>
+                                <rect key="frame" x="239" y="84" width="135" height="20.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="0SO-HT-2Uz"/>
+                                    <constraint firstAttribute="width" constant="135" id="0SO-HT-2Uz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -74,7 +74,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o47-NW-3xB">
-                                <rect key="frame" x="40" y="339" width="119" height="119"/>
+                                <rect key="frame" x="191" y="80" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>

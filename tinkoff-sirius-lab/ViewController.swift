@@ -116,10 +116,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
         self.priceChangeLabel.textColor = textColor
         self.priceChangeLabel.text = "\(priceChange) $"
-        self.updateLogo(for: companySymbol)
+        self.updateLogo(symbol: companySymbol, companyName: companyName)
     }
     
-    private func updateLogo(for symbol: String) {
+    private func updateLogo(symbol: String, companyName: String) {
         let urlLogo = URL(string: "https://storage.googleapis.com/iex/api/logos/\(symbol).png")!
         
         let dataTask = URLSession.shared.dataTask(with: urlLogo) { data, response, error in
@@ -128,10 +128,14 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                 (response as? HTTPURLResponse)?.statusCode == 200,
                 let data = data
             else {
-                print("Network error")
+                self.companyLogo.isHidden = true
                 return
             }
             DispatchQueue.main.async {
+                let screenWidth = Int(self.view.frame.size.width)
+                let logoPositionByX = screenWidth - min (companyName.count * 16 , Int(self.view.frame.size.width)/2 + 10)
+                let logoPositionByY = Int(self.companyLogo.frame.minY)
+                self.companyLogo.frame.origin = CGPoint(x: logoPositionByX, y: logoPositionByY)
                 self.companyLogo.isHidden = false
                 self.companyLogo.image = UIImage(data: data)
             }
