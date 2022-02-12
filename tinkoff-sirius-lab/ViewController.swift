@@ -18,7 +18,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var priceChangeLabel: UILabel!
     @IBOutlet weak var companyPickerView: UIPickerView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet weak var companyLogo: UIImageView!
     
     // MARK - Private properties
     
@@ -54,7 +54,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                 (response as? HTTPURLResponse)?.statusCode == 200,
                 let data = data
             else {
-                print(" Network error")
+                print("Network error")
                 return
             }
             self.parseQuote(data: data)
@@ -64,6 +64,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     private func requestQuoteUpdate () {
         self.activityIndicator.startAnimating()
+        self.companyLogo.isHidden = true
         self.companyNameLabel.text = "-"
         self.companySymbolLabel.text = "-"
         self.priceLabel.text = "-"
@@ -115,6 +116,29 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
         self.priceChangeLabel.textColor = textColor
         self.priceChangeLabel.text = "\(priceChange) $"
+        self.updateLogo(for: companySymbol)
+    }
+    
+    private func updateLogo(for symbol: String) {
+        let urlLogo = URL(string: "https://storage.googleapis.com/iex/api/logos/\(symbol).png")!
+        
+        let dataTask = URLSession.shared.dataTask(with: urlLogo) { data, response, error in
+            guard
+                error == nil,
+                (response as? HTTPURLResponse)?.statusCode == 200,
+                let data = data
+            else {
+                print("Network error")
+                return
+            }
+            DispatchQueue.main.async {
+                self.companyLogo.isHidden = false
+                self.companyLogo.image = UIImage(data: data)
+            }
+        }
+        dataTask.resume()
+        
+        
     }
     
     // MARK - UIPickerViewDataSource

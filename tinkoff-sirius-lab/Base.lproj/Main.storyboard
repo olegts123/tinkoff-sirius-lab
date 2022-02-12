@@ -73,6 +73,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o47-NW-3xB">
+                                <rect key="frame" x="40" y="339" width="119" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -103,6 +107,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="cxf-0N-A7w" id="1AA-AN-zdN"/>
+                        <outlet property="companyLogo" destination="o47-NW-3xB" id="0FX-br-34O"/>
                         <outlet property="companyNameLabel" destination="5XY-nZ-MlV" id="ukv-z2-QLw"/>
                         <outlet property="companyPickerView" destination="EQP-Ik-AuY" id="Ec3-ec-vhB"/>
                         <outlet property="companySymbolLabel" destination="4kA-CD-qom" id="iJm-Pw-nP3"/>
@@ -112,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133" y="115"/>
+            <point key="canvasLocation" x="131.8840579710145" y="114.50892857142857"/>
         </scene>
     </scenes>
     <resources>
